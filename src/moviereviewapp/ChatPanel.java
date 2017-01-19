@@ -82,7 +82,7 @@ public class ChatPanel extends javax.swing.JPanel {
                     }
                     out.println(a.getUsername());
                 } else if (line.startsWith("NAMEACCEPTED")) {
-                    ChatTextArea.append("Greetings " + a.getUsername() + ".\nPlease be friendly and follow the moderation rules in the readMe.txt\nwhile using the chat room.\n---\n\n");
+                    ChatTextArea.append("Greetings " + a.getUsername() +"\n-----\n");
                     InputTextField.setEditable(true);
                 } else if (line.startsWith("MESSAGE")) {
                     ChatTextArea.append(line.substring(8) + "\n");

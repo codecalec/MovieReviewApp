@@ -6,9 +6,12 @@
 package moviereviewapp;
 
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +33,7 @@ public class MovieAppFrame extends javax.swing.JFrame {
      * Creates new form MovieAppFrame
      */
     public MovieAppFrame() {
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ImagePackage/appIcon.png")));      
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ImagePackage/appIcon.png")));
         authenticated = false;
         initComponents();
         Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ImagePackage/cursor.png")), new Point(this.getX(), this.getY()), "img");
@@ -71,9 +74,6 @@ public class MovieAppFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         AccountMenuItem = new javax.swing.JMenuItem();
@@ -81,12 +81,8 @@ public class MovieAppFrame extends javax.swing.JFrame {
         UserMenuItem = new javax.swing.JMenuItem();
         ReviewMenuItem = new javax.swing.JMenuItem();
         chatMenuItem = new javax.swing.JMenuItem();
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CineFlux");
@@ -143,6 +139,20 @@ public class MovieAppFrame extends javax.swing.JFrame {
         jMenu3.add(chatMenuItem);
 
         jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Help");
+        jMenu4.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jMenuItem1.setText("Help PDF");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuBar2.add(jMenu4);
 
         setJMenuBar(jMenuBar2);
 
@@ -231,6 +241,18 @@ public class MovieAppFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AccountMenuItemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File(getClass().getResource("/moviereviewapp/test.pdf").getFile());
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void successfulLogIn(Account a) {
         lip.setVisible(false);
         currentAccount = a;
@@ -292,10 +314,9 @@ public class MovieAppFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem ReviewMenuItem;
     private javax.swing.JMenuItem UserMenuItem;
     private javax.swing.JMenuItem chatMenuItem;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
